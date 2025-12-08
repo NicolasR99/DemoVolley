@@ -6,401 +6,347 @@
   <title>VolleyFit — Volleyball & Gym</title>
   <meta name="description" content="VolleyFit: Entrenamiento especializado en volleyball y acondicionamiento físico. Clases, entrenadores, horarios y membresías en un entorno moderno." />
 
-  <!-- Google Fonts -->
+  <!-- Fonts -->
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&family=Rubik:wght@400;600&display=swap" rel="stylesheet">
 
   <style>
     :root{
-      --bg:#0b1220; /* deep navy */
+      --bg:#0b1220;
       --panel:#0f1724;
       --muted:#a6b0c3;
-      --accent:#00d1c1; /* teal */
-      --accent-2:#ffd166; /* warm highlight */
+      --accent:#00d1c1;
+      --accent-2:#ffd166;
       --glass: rgba(255,255,255,0.04);
-      --card-shadow: 0 8px 24px rgba(2,6,23,0.6);
       --radius:14px;
       color-scheme: dark;
     }
 
-    *{box-sizing:border-box}
-    html,body{height:100%}
+    *{box-sizing:border-box;margin:0;padding:0}
     body{
-      margin:0; font-family:Inter, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial; background:radial-gradient(1200px 600px at 10% 10%, rgba(0,209,193,0.06), transparent), radial-gradient(900px 450px at 90% 90%, rgba(255,209,102,0.03), transparent), var(--bg); color:#e6eef8; -webkit-font-smoothing:antialiased; -moz-osx-font-smoothing:grayscale; line-height:1.45;
+      background:radial-gradient(1200px 600px at 10% 10%, rgba(0,209,193,0.06), transparent),
+                radial-gradient(900px 450px at 90% 90%, rgba(255,209,102,0.03), transparent),
+                var(--bg);
+      font-family:Inter, sans-serif;
+      color:#e6eef8;
       padding:36px 24px;
+      overflow-x:hidden;
     }
 
-    /* Layout container */
     .container{max-width:1200px;margin:0 auto}
 
-    header{display:flex;align-items:center;justify-content:space-between;gap:18px;margin-bottom:32px}
+    /* HEADER */
+    header{
+      display:flex;align-items:center;justify-content:space-between;margin-bottom:38px;
+      position:relative;
+    }
+
+    /* light line */
+    header::after{
+      content:"";position:absolute;bottom:-8px;left:0;width:100%;height:2px;
+      background:linear-gradient(90deg, transparent, var(--accent), transparent);
+      opacity:0.25;animation:lineGlow 4s infinite linear;
+    }
+    @keyframes lineGlow{
+      0%{opacity:.1}50%{opacity:.4}100%{opacity:.1}
+    }
+
     .brand{display:flex;gap:12px;align-items:center}
-    .logo{width:56px;height:56px;background:linear-gradient(135deg,var(--accent-2),var(--accent));border-radius:12px;display:flex;align-items:center;justify-content:center;box-shadow:var(--card-shadow)}
-    .logo svg{width:30px;height:30px;filter:drop-shadow(0 2px 8px rgba(0,0,0,0.6))}
-    .brand h1{font-family:Rubik, Inter; font-size:20px;margin:0}
-    .brand p{margin:0;font-size:12px;color:var(--muted)}
+    .logo{
+      width:56px;height:56px;border-radius:12px;
+      background:linear-gradient(135deg,var(--accent-2),var(--accent));
+      display:flex;align-items:center;justify-content:center;
+      box-shadow:0 10px 25px rgba(0,0,0,0.6);
+      animation:float 3s ease-in-out infinite;
+    }
+    @keyframes float{
+      0%,100%{transform:translateY(0)}
+      50%{transform:translateY(-6px)}
+    }
 
-    nav{display:flex;gap:14px;align-items:center}
-    nav a{color:var(--muted);text-decoration:none;padding:8px 12px;border-radius:10px;font-weight:600;font-size:14px}
-    nav a:hover{color:#fff;background:rgba(255,255,255,0.03)}
-    .cta{background:linear-gradient(90deg,var(--accent),#2fe7d4);color:#052126;padding:10px 14px;border-radius:12px;font-weight:700;box-shadow:0 6px 18px rgba(2,209,193,0.08)}
+    nav{display:flex;gap:14px;font-weight:600}
+    nav a{
+      color:var(--muted);text-decoration:none;padding:8px 12px;border-radius:10px;
+      transition:0.25s;
+    }
+    nav a:hover{color:#fff;background:rgba(255,255,255,0.05)}
 
-    /* Hero */
-    .hero{display:grid;grid-template-columns:1fr 420px;gap:28px;align-items:center;margin-bottom:36px}
-    .hero-card{background:linear-gradient(180deg, rgba(255,255,255,0.02), transparent); padding:28px;border-radius:var(--radius);box-shadow:var(--card-shadow);border:1px solid rgba(255,255,255,0.03)}
+    .cta{
+      background:linear-gradient(90deg,var(--accent),#2fe7d4);
+      color:#052126;padding:10px 14px;border-radius:12px;font-weight:700;
+      box-shadow:0 6px 20px rgba(0,209,193,0.3);
+      transition:0.25s;
+    }
+    .cta:hover{transform:translateY(-3px);box-shadow:0 12px 30px rgba(0,209,193,0.4)}
 
-    .hero h2{font-family:Rubik;font-size:34px;margin:0 0 10px}
-    .hero p.lead{color:var(--muted);margin:0 0 18px}
-    .features{display:flex;gap:12px;flex-wrap:wrap}
-    .feature{background:var(--glass);padding:10px 12px;border-radius:10px;font-size:13px;color:var(--muted);display:flex;gap:10px;align-items:center}
-    .feature svg{opacity:0.95}
+    /* HERO */
+    .hero{
+      display:grid;grid-template-columns:1fr 420px;gap:28px;align-items:center;margin-bottom:48px;
+    }
 
-    .hero-visual{position:relative;height:320px;border-radius:12px;overflow:hidden;background:linear-gradient(180deg, rgba(3,7,18,0.3), rgba(0,0,0,0.6));display:flex;align-items:center;justify-content:center}
-    .court{width:92%;height:92%;border-radius:10px;background:linear-gradient(180deg,#071026 0%, #081a2a 100%);padding:18px;display:grid;grid-template-rows:1fr auto}
-    .court .court-surface{flex:1;border-radius:8px;background:repeating-linear-gradient(90deg, rgba(255,255,255,0.02) 0 2px, transparent 2px 8px);display:flex;align-items:center;justify-content:center}
-    .badge{position:absolute;top:14px;left:14px;background:rgba(255,255,255,0.04);padding:8px 12px;border-radius:999px;font-weight:700;color:var(--accent-2);font-size:13px}
+    .hero-card{
+      background:linear-gradient(180deg, rgba(255,255,255,0.03), transparent);
+      border-radius:var(--radius);
+      padding:32px;
+      border:1px solid rgba(255,255,255,0.05);
+      box-shadow:0 8px 24px rgba(0,0,0,0.6);
+      animation:fadeUp 1s ease forwards;
+    }
 
-    /* Grid sections */
+    @keyframes fadeUp{
+      from{opacity:0;transform:translateY(40px)}
+      to{opacity:1;transform:translateY(0)}
+    }
+
+    .badge{
+      background:rgba(255,255,255,0.05);
+      padding:8px 12px;border-radius:999px;font-size:13px;font-weight:600;
+      color:var(--accent-2);
+      animation:fade 3s infinite alternate;
+    }
+    @keyframes fade{
+      0%{opacity:0.6}
+      100%{opacity:1}
+    }
+
+    h2{font-family:Rubik;font-size:34px;margin:0 0 12px}
+    .lead{color:var(--muted);margin-bottom:18px}
+
+    .features{display:flex;gap:12px;flex-wrap:wrap;margin-top:18px}
+    .feature{
+      background:var(--glass);padding:10px 12px;border-radius:10px;font-size:13px;
+      display:flex;gap:10px;align-items:center;
+      transition:0.3s;
+    }
+    .feature:hover{background:rgba(255,255,255,0.08);transform:translateY(-3px)}
+
+    /* VISUAL HERO */
+    .hero-visual{
+      position:relative;height:320px;border-radius:12px;overflow:hidden;
+      background:linear-gradient(180deg, rgba(3,7,18,0.4), rgba(0,0,0,0.7));
+      display:flex;align-items:center;justify-content:center;
+      animation:parallax 10s infinite linear alternate;
+    }
+
+    @keyframes parallax{
+      0%{transform:translateY(0)}
+      100%{transform:translateY(-14px)}
+    }
+
+    .court{width:92%;height:92%;background:#081423;border-radius:14px;padding:18px;display:flex;flex-direction:column;justify-content:space-between}
+
+    /* GRID */
     .grid{display:grid;grid-template-columns:repeat(12,1fr);gap:20px}
     .col-8{grid-column:span 8}
     .col-4{grid-column:span 4}
 
-    /* Programs */
-    .cards{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
-    .card{background:linear-gradient(180deg, rgba(255,255,255,0.02), transparent);padding:18px;border-radius:12px;border:1px solid rgba(255,255,255,0.03);box-shadow:0 6px 18px rgba(2,8,20,0.6)}
-    .card h3{margin:0 0 8px}
-    .card p{color:var(--muted);margin:0 0 12px}
-    .pill{display:inline-block;padding:6px 10px;border-radius:999px;background:rgba(255,255,255,0.03);color:var(--muted);font-weight:700;font-size:13px}
+    /* CARDS */
+    .cards{
+      display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:14px
+    }
+    .card{
+      background:rgba(255,255,255,0.03);
+      padding:18px;border-radius:12px;
+      border:1px solid rgba(255,255,255,0.04);
+      box-shadow:0 6px 20px rgba(0,0,0,0.6);
+      transition:0.35s;
+      transform-style:preserve-3d;
+    }
+    .card:hover{
+      transform:translateY(-10px) rotateX(4deg) rotateY(-3deg);
+      box-shadow:0 18px 34px rgba(0,0,0,0.7);
+    }
 
-    /* Schedule */
-    table{width:100%;border-collapse:collapse;background:transparent}
-    th,td{padding:12px 10px;text-align:left;border-bottom:1px dashed rgba(255,255,255,0.03)}
-    th{color:var(--muted);font-weight:600}
+    .pill{
+      background:rgba(255,255,255,0.05);
+      padding:6px 10px;border-radius:999px;font-size:13px;font-weight:700;color:var(--muted)
+    }
 
-    /* Trainers */
-    .trainers{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
-    .trainer{background:linear-gradient(180deg, rgba(255,255,255,0.02), transparent);padding:14px;border-radius:12px;display:flex;gap:12px;align-items:center}
-    .avatar{width:72px;height:72px;border-radius:12px;background:linear-gradient(135deg,var(--accent),#28b6bd);display:flex;align-items:center;justify-content:center;font-weight:800;color:#042026;font-size:28px}
-    .trainer h4{margin:0;font-size:16px}
-    .trainer p{margin:4px 0 0;color:var(--muted);font-size:13px}
+    /* TRAINERS */
+    .trainers{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:16px}
+    .trainer{
+      background:rgba(255,255,255,0.03);padding:14px;border-radius:12px;display:flex;gap:12px;
+      border:1px solid rgba(255,255,255,0.05);
+      transition:0.35s;
+    }
+    .trainer:hover{transform:translateY(-8px);box-shadow:0 16px 32px rgba(0,0,0,0.6)}
 
-    /* Gallery */
-    .gallery{display:grid;grid-template-columns:repeat(4,1fr);gap:8px}
-    .gallery .item{height:120px;border-radius:10px;overflow:hidden;position:relative;background-size:cover;background-position:center}
-    .gallery .overlay{position:absolute;inset:0;background:linear-gradient(180deg,transparent,rgba(0,0,0,0.5));display:flex;align-items:flex-end;padding:10px;color:#fff;font-weight:700}
+    /* GALLERY */
+    .gallery{
+      display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin-top:16px
+    }
+    .gallery .item{
+      height:120px;border-radius:10px;overflow:hidden;position:relative;
+      background-size:cover;background-position:center;
+      filter:brightness(0.85);transition:0.3s;
+    }
+    .gallery .item:hover{filter:brightness(1)}
 
-    /* Membership */
-    .pricing{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
-    .price{padding:18px;border-radius:12px;background:linear-gradient(180deg, rgba(0,0,0,0.2), rgba(255,255,255,0.02));border:1px solid rgba(255,255,255,0.03)}
-    .price h3{margin:0 0 10px}
-    .price .amount{font-size:24px;font-weight:800;color:var(--accent)}
+    /* MEMBERSHIP */
+    .pricing{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:14px}
+    .price{
+      background:rgba(255,255,255,0.03);
+      padding:18px;border-radius:12px;border:1px solid rgba(255,255,255,0.04);
+      transition:0.35s;
+    }
+    .price:hover{transform:translateY(-8px);box-shadow:0 18px 38px rgba(0,0,0,0.7)}
+
     .btn{display:inline-block;padding:10px 14px;border-radius:10px;font-weight:700;text-decoration:none}
-    .btn-ghost{border:1px solid rgba(255,255,255,0.06);color:var(--muted)}
+    .btn-ghost{border:1px solid rgba(255,255,255,0.08);color:var(--muted)}
 
-    /* Footer */
-    footer{margin-top:40px;padding:22px;border-radius:12px;background:linear-gradient(180deg, rgba(255,255,255,0.01), transparent);display:flex;justify-content:space-between;align-items:center}
+    /* SCROLL ANIMATIONS */
+    .reveal{opacity:0;transform:translateY(50px);transition:0.8s ease-out}
+    .reveal.visible{opacity:1;transform:translateY(0)}
 
-    /* Responsiveness */
-    @media (max-width:1000px){
-      .hero{grid-template-columns:1fr;}
-      .cards{grid-template-columns:repeat(2,1fr)}
-      .trainers{grid-template-columns:repeat(2,1fr)}
-      .gallery{grid-template-columns:repeat(3,1fr)}
-      .pricing{grid-template-columns:repeat(2,1fr)}
-    }
-    @media (max-width:640px){
-      body{padding:18px}
-      .cards{grid-template-columns:1fr}
-      .trainers{grid-template-columns:1fr}
-      .gallery{grid-template-columns:repeat(2,1fr)}
-      .pricing{grid-template-columns:1fr}
-      nav{display:none}
-    }
-
-    /* small animations */
-    .card, .trainer, .price{transition:transform .28s ease, box-shadow .28s ease}
-    .card:hover, .trainer:hover, .price:hover{transform:translateY(-8px);box-shadow:0 18px 40px rgba(2,8,20,0.7)}
-
-    /* utility */
-    .muted{color:var(--muted)}
-    .center{display:flex;align-items:center;justify-content:center}
   </style>
 </head>
+
 <body>
-  <div class="container">
+<div class="container">
 
-    <header>
-      <div class="brand">
-        <div class="logo" aria-hidden>
-          <!-- Volleyball + dumbbell symbol -->
-          <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M6 17c-1.657 0-3-1.343-3-3" stroke="#042026" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
-            <circle cx="12" cy="9" r="4" fill="#042026" opacity="0.08"/>
-            <path d="M3 6l3-3 4 4" stroke="#042026" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
-          </svg>
-        </div>
-        <div>
-          <h1>VolleyFit</h1>
-          <p>Volleyball • Conditioning • Comunidad</p>
-        </div>
+  <!-- HEADER -->
+  <header class="reveal">
+    <div class="brand">
+      <div class="logo">
+        <svg viewBox="0 0 24 24" width="30" height="30"><circle cx="12" cy="12" r="9" stroke="#042026" stroke-width="1.6"/></svg>
+      </div>
+      <div>
+        <h1>VolleyFit</h1>
+        <p style="color:var(--muted);font-size:12px">Volleyball • Conditioning • Comunidad</p>
+      </div>
+    </div>
+
+    <nav>
+      <a href="#programs">Programas</a>
+      <a href="#trainers">Entrenadores</a>
+      <a href="#schedule">Horarios</a>
+      <a href="#membership">Membresías</a>
+      <a class="cta" href="#contact">Únete</a>
+    </nav>
+  </header>
+
+  <!-- HERO -->
+  <section class="hero reveal">
+    <div class="hero-card">
+      <span class="badge">Nuevo · Clases mixtas</span>
+      <h2>Entrena más fuerte. Salta más alto. Juega mejor.</h2>
+      <p class="lead">Combinamos entrenamiento específico de volleyball con fuerza y prevención de lesiones.</p>
+
+      <div class="features">
+        <div class="feature"><span>🏐 Entrenamientos dirigidos</span></div>
+        <div class="feature"><span>💪 Fuerza & movilidad</span></div>
+        <div class="feature"><span>🎓 Entrenadores certificados</span></div>
       </div>
 
-      <nav>
-        <a href="#programs">Programas</a>
-        <a href="#trainers">Entrenadores</a>
-        <a href="#schedule">Horarios</a>
-        <a href="#membership">Membresías</a>
-        <a class="cta" href="#contact">Únete</a>
-      </nav>
-    </header>
-
-    <!-- HERO -->
-    <section class="hero">
-      <div class="hero-card">
-        <span class="badge">Nuevo · Clases mixtas</span>
-        <h2>Entrena más fuerte. Salta más alto. Juega mejor.</h2>
-        <p class="lead">Combinamos entrenamiento específico de volleyball con acondicionamiento funcional. Desde técnica en pista hasta fuerza y prevención de lesiones.</p>
-
-        <div class="features" aria-hidden>
-          <div class="feature">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M12 2v6" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
-            <span>Entrenamientos dirigidos</span>
-          </div>
-          <div class="feature">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M3 7h18" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
-            <span>Plan de fuerza y movilidad</span>
-          </div>
-          <div class="feature">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M12 21c4.418 0 8-3.582 8-8" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
-            <span>Entrenadores certificados</span>
-          </div>
-        </div>
-
-        <div style="margin-top:18px;display:flex;gap:12px;flex-wrap:wrap">
-          <a class="cta" href="#membership">Comenzar</a>
-          <a class="btn btn-ghost" href="#programs">Ver Programas</a>
-        </div>
-
-        <hr style="border:none;border-top:1px dashed rgba(255,255,255,0.03);margin:18px 0">
-        <div style="display:flex;gap:12px;align-items:center">
-          <div style="font-weight:700;color:var(--accent)">Próxima clase</div>
-          <div class="muted">Sábado • 18:00 • Técnica de remate y salto</div>
-        </div>
+      <div style="margin-top:18px;display:flex;gap:12px">
+        <a class="cta" href="#membership">Comenzar</a>
+        <a class="btn btn-ghost" href="#programs">Ver Programas</a>
       </div>
+    </div>
 
-      <aside class="hero-visual" aria-hidden>
-        <div class="court">
-          <div class="court-surface center">
-            <!-- Simple stylized volleyball silhouette -->
-            <svg width="220" height="220" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <circle cx="12" cy="12" r="9" stroke="rgba(255,255,255,0.12)" stroke-width="1.6"/>
-              <path d="M3 8.5c5.5-3 11-3 18 0" stroke="rgba(255,255,255,0.06)" stroke-width="1.4" stroke-linecap="round"/>
-              <path d="M4 15.5c5.5 3 11 3 18 0" stroke="rgba(255,255,255,0.06)" stroke-width="1.4" stroke-linecap="round"/>
-            </svg>
-          </div>
-          <div style="display:flex;gap:12px;align-items:center;justify-content:space-between;padding-top:12px">
-            <div class="muted">Sesiones semanales</div>
-            <div style="font-weight:800;color:var(--accent)">+12 programas</div>
-          </div>
-        </div>
-      </aside>
+    <aside class="hero-visual">
+      <div class="court center">
+        <svg width="220" height="220" viewBox="0 0 24 24">
+          <circle cx="12" cy="12" r="9" stroke="rgba(255,255,255,0.15)" stroke-width="1.6"/>
+        </svg>
+      </div>
+    </aside>
+  </section>
+
+  <!-- MAIN GRID -->
+  <main class="grid">
+    <!-- PROGRAMAS -->
+    <section class="col-8 reveal" id="programs">
+      <h3 style="font-family:Rubik;margin-bottom:12px">Programas destacados</h3>
+      <div class="cards">
+        <article class="card">
+          <h3>Técnica de Pista</h3>
+          <p>Mejora recepción, colocación y remate con drills progresivos.</p>
+          <div class="pill">3 niveles</div>
+        </article>
+
+        <article class="card">
+          <h3>Fuerza y Potencia</h3>
+          <p>Entrenamiento funcional para salto, velocidad y resistencia.</p>
+          <div class="pill">Atletas</div>
+        </article>
+
+        <article class="card">
+          <h3>Prevención de Lesiones</h3>
+          <p>Movilidad, estabilidad y técnica para mantenerte en pista.</p>
+          <div class="pill">Todos los niveles</div>
+        </article>
+      </div>
     </section>
 
-    <!-- MAIN GRID -->
-    <main class="grid">
-      <section class="col-8">
-        <!-- Programs -->
-        <div id="programs" style="margin-bottom:22px">
-          <h3 style="font-family:Rubik;margin:0 0 12px">Programas destacados</h3>
-          <div class="cards">
-            <article class="card">
-              <h3>Técnica de Pista</h3>
-              <p>Mejora recepción, colocación y remate con drills progresivos. Ideal para jugadores que quieren competir.</p>
-              <div style="display:flex;gap:8px;align-items:center;justify-content:space-between;margin-top:12px">
-                <div class="pill">3 niveles</div>
-                <div class="muted">Desde 45 min</div>
-              </div>
-            </article>
-
-            <article class="card">
-              <h3>Fuerza y Potencia</h3>
-              <p>Sesiones en sala con énfasis en fuerza, pliometría y prevención de lesiones orientadas al rendimiento en pista.</p>
-              <div style="display:flex;gap:8px;align-items:center;justify-content:space-between;margin-top:12px">
-                <div class="pill">Entrenamiento funcional</div>
-                <div class="muted">Plan mensual</div>
-              </div>
-            </article>
-
-            <article class="card">
-              <h3>Clase Social / Recreativa</h3>
-              <p>Partidos amistosos y clases abiertas para quienes buscan mantenerse activos y divertirse.</p>
-              <div style="display:flex;gap:8px;align-items:center;justify-content:space-between;margin-top:12px">
-                <div class="pill">Mixto</div>
-                <div class="muted">Drop-in</div>
-              </div>
-            </article>
-          </div>
+    <!-- TRAINERS -->
+    <aside class="col-4 reveal" id="trainers">
+      <h3 style="font-family:Rubik;margin-bottom:12px">Entrenadores</h3>
+      <div class="trainers">
+        <div class="trainer">
+          <div class="avatar">A</div>
+          <div><h4>Ana</h4><p>Técnica & Fuerza</p></div>
         </div>
-
-        <!-- Schedule -->
-        <div id="schedule" style="margin-bottom:22px">
-          <h3 style="font-family:Rubik;margin:0 0 12px">Horarios</h3>
-          <div class="hero-card">
-            <table>
-              <thead>
-                <tr><th>Día</th><th>Clase</th><th>Hora</th><th>Entrenador</th></tr>
-              </thead>
-              <tbody>
-                <tr><td>Lunes</td><td>Técnica de recepción</td><td>18:00 - 19:15</td><td>María P.</td></tr>
-                <tr><td>Miércoles</td><td>Fuerza y Potencia</td><td>19:00 - 20:00</td><td>Andrés V.</td></tr>
-                <tr><td>Sábado</td><td>Partidos / Scrimmage</td><td>17:00 - 19:00</td><td>Equipo</td></tr>
-              </tbody>
-            </table>
-          </div>
+        <div class="trainer">
+          <div class="avatar">M</div>
+          <div><h4>Marco</h4><p>Potencia & Rendimiento</p></div>
         </div>
-
-        <!-- Trainers -->
-        <div id="trainers" style="margin-bottom:22px">
-          <h3 style="font-family:Rubik;margin:0 0 12px">Entrenadores</h3>
-          <div class="trainers">
-            <div class="trainer">
-              <div class="avatar">MP</div>
-              <div>
-                <h4>María Pérez</h4>
-                <p class="muted">Especialista en técnica defensiva · Lic. en Ciencias del Deporte</p>
-              </div>
-            </div>
-
-            <div class="trainer">
-              <div class="avatar">AV</div>
-              <div>
-                <h4>Andrés Villca</h4>
-                <p class="muted">Preparador físico · Experto en prevención de lesiones</p>
-              </div>
-            </div>
-
-            <div class="trainer">
-              <div class="avatar">LF</div>
-              <div>
-                <h4>Laura Flores</h4>
-                <p class="muted">Entrenadora de bloque y remate · Ex-jugadora profesional</p>
-              </div>
-            </div>
-          </div>
+        <div class="trainer">
+          <div class="avatar">L</div>
+          <div><h4>Luisa</h4><p>Movilidad & Lesiones</p></div>
         </div>
+      </div>
+    </aside>
+  </main>
 
-        <!-- Gallery -->
-        <div style="margin-bottom:22px">
-          <h3 style="font-family:Rubik;margin:0 0 12px">Galería</h3>
-          <div class="gallery">
-            <div class="item" style="background-image:url('https://images.unsplash.com/photo-1508609349937-5ec4ae374ebf?q=80&w=800&auto=format&fit=crop')">
-              <div class="overlay">Entrenamiento</div>
-            </div>
-            <div class="item" style="background-image:url('https://images.unsplash.com/photo-1526401485004-2f01e3e7b7b3?q=80&w=800&auto=format&fit=crop')">
-              <div class="overlay">Técnica</div>
-            </div>
-            <div class="item" style="background-image:url('https://images.unsplash.com/photo-1546484959-f5a3a9a3b6f6?q=80&w=800&auto=format&fit=crop')">
-              <div class="overlay">Sala de fuerza</div>
-            </div>
-            <div class="item" style="background-image:url('https://images.unsplash.com/photo-1526401281623-18d4d89f0a1e?q=80&w=800&auto=format&fit=crop')">
-              <div class="overlay">Partido</div>
-            </div>
-          </div>
-        </div>
+  <!-- GALLERY -->
+  <section class="reveal" style="margin-top:40px">
+    <h3 style="font-family:Rubik;margin-bottom:12px">Galería</h3>
+    <div class="gallery">
+      <div class="item" style="background-image:url('https://images.unsplash.com/photo-1504450758481-7338eba7524a')"></div>
+      <div class="item" style="background-image:url('https://images.unsplash.com/photo-1574629810360-7efbbe195018')"></div>
+      <div class="item" style="background-image:url('https://images.unsplash.com/photo-1521412644187-c49fa049e84d')"></div>
+      <div class="item" style="background-image:url('https://images.unsplash.com/photo-1505678261036-a3fcc5e884ee')"></div>
+    </div>
+  </section>
 
-      </section>
+  <!-- MEMBERSHIP -->
+  <section class="reveal" id="membership" style="margin-top:40px">
+    <h3 style="font-family:Rubik;margin-bottom:12px">Membresías</h3>
+    <div class="pricing">
+      <div class="price">
+        <h3>Básico</h3>
+        <p class="amount">120 Bs/mes</p>
+        <p class="muted">2 clases por semana</p>
+      </div>
+      <div class="price">
+        <h3>Intermedio</h3>
+        <p class="amount">180 Bs/mes</p>
+        <p class="muted">3 clases por semana</p>
+      </div>
+      <div class="price">
+        <h3>Completo</h3>
+        <p class="amount">250 Bs/mes</p>
+        <p class="muted">Clases ilimitadas</p>
+      </div>
+    </div>
+  </section>
 
-      <aside class="col-4">
-        <!-- Quick Join card -->
-        <div class="hero-card" style="margin-bottom:18px">
-          <h3 style="margin:0 0 8px">Únete a VolleyFit</h3>
-          <p class="muted">Prueba una clase gratis o elige una membresía. Acceso a sala de fuerza y pista.</p>
-          <div style="display:flex;gap:8px;margin-top:12px">
-            <div style="flex:1">
-              <div style="font-size:12px;color:var(--muted)">Nombre</div>
-              <input style="width:100%;padding:10px;border-radius:8px;border:1px solid rgba(255,255,255,0.03);background:transparent;color:inherit;margin-top:6px" placeholder="Tu nombre" />
-            </div>
-            <div style="width:110px">
-              <a class="cta center" href="#contact">Reservar</a>
-            </div>
-          </div>
-        </div>
+</div>
 
-        <!-- Pricing -->
-        <div id="membership" style="margin-bottom:18px">
-          <h3 style="margin:0 0 12px;font-family:Rubik">Membresías</h3>
-          <div class="pricing">
-            <div class="price">
-              <h3>Mensual</h3>
-              <div class="amount">Bs 180</div>
-              <p class="muted">Acceso ilimitado a sala + 2 clases semanales</p>
-              <div style="margin-top:12px">
-                <a class="btn" href="#contact" style="background:linear-gradient(90deg,var(--accent),#2fe7d4);color:#042026;border-radius:10px">Apuntarme</a>
-              </div>
-            </div>
+<!-- SCROLL REVEAL SCRIPT -->
+<script>
+  const reveals=document.querySelectorAll('.reveal');
+  const revealOnScroll=()=>{
+    for(let r of reveals){
+      const rect=r.getBoundingClientRect();
+      if(rect.top < window.innerHeight-80){
+        r.classList.add('visible');
+      }
+    }
+  };
+  window.addEventListener('scroll',revealOnScroll);
+  revealOnScroll();
+</script>
 
-            <div class="price">
-              <h3>Trimestral</h3>
-              <div class="amount">Bs 480</div>
-              <p class="muted">Ahorra 10% sobre mensualidades</p>
-              <div style="margin-top:12px">
-                <a class="btn btn-ghost" href="#contact">Más info</a>
-              </div>
-            </div>
-
-            <div class="price">
-              <h3>Drop-in</h3>
-              <div class="amount">Bs 40</div>
-              <p class="muted">Paga por clase - ideal para visitantes</p>
-              <div style="margin-top:12px">
-                <a class="btn btn-ghost" href="#contact">Reservar</a>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <!-- Contact -->
-        <div id="contact" class="hero-card">
-          <h3 style="margin:0 0 8px">Contacto</h3>
-          <p class="muted">¿Dudas? Escríbenos y te responderemos pronto.</p>
-          <form style="margin-top:10px;display:grid;gap:10px">
-            <input placeholder="Email" style="padding:10px;border-radius:8px;border:1px solid rgba(255,255,255,0.03);background:transparent;color:inherit" />
-            <input placeholder="Teléfono" style="padding:10px;border-radius:8px;border:1px solid rgba(255,255,255,0.03);background:transparent;color:inherit" />
-            <textarea placeholder="Mensaje" rows="3" style="padding:10px;border-radius:8px;border:1px solid rgba(255,255,255,0.03);background:transparent;color:inherit"></textarea>
-            <div style="display:flex;gap:8px">
-              <button type="submit" class="cta" style="border:none">Enviar</button>
-              <button type="button" class="btn btn-ghost">Llamar</button>
-            </div>
-          </form>
-        </div>
-
-      </aside>
-
-      <!-- Full width: extra info -->
-      <section style="grid-column:1 / -1;margin-top:18px;display:flex;gap:18px;flex-wrap:wrap;align-items:center;justify-content:space-between">
-        <div style="display:flex;gap:12px;align-items:center">
-          <div style="width:56px;height:56px;border-radius:12px;background:linear-gradient(135deg,var(--accent),var(--accent-2));display:flex;align-items:center;justify-content:center;font-weight:800;color:#042026">V</div>
-          <div>
-            <div style="font-weight:800">Espacio para equipos</div>
-            <div class="muted">Alquiler de pista y soporte para entrenamientos de clubes</div>
-          </div>
-        </div>
-
-        <div style="display:flex;gap:12px;align-items:center">
-          <div class="muted">Siguenos</div>
-          <div style="display:flex;gap:8px;align-items:center">
-            <a href="#" class="muted">Instagram</a>
-            <a href="#" class="muted">Facebook</a>
-            <a href="#" class="muted">YouTube</a>
-          </div>
-        </div>
-      </section>
-
-    </main>
-
-    <footer>
-      <div class="muted">© <strong>VolleyFit</strong> 2025 · Todos los derechos reservados</div>
-      <div class="muted">Diseño moderno · Modo oscuro</div>
-    </footer>
-  </div>
 </body>
 </html>
