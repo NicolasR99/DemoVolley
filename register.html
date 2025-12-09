@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Registro - VolleyFit</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <style>
+        body {
+            background: linear-gradient(135deg, #111827, #1f2937);
+        }
+    </style>
+</head>
+
+<body class="min-h-screen flex items-center justify-center px-4">
+
+    <div class="w-full max-w-xl bg-white/10 backdrop-blur-xl p-8 rounded-2xl shadow-2xl border border-white/20">
+
+        <h1 class="text-3xl font-bold text-center text-white mb-6">Regístrate en VolleyFit</h1>
+
+        <form class="space-y-5">
+
+            <div>
+                <label class="text-white font-semibold">Nombre completo</label>
+                <input type="text" class="w-full mt-1 px-4 py-2 rounded-lg bg-white/20 text-white placeholder-gray-300 border border-white/30 focus:ring focus:ring-pink-500 outline-none">
+            </div>
+
+            <div>
+                <label class="text-white font-semibold">Número de celular</label>
+                <input type="text" class="w-full mt-1 px-4 py-2 rounded-lg bg-white/20 text-white placeholder-gray-300 border border-white/30 focus:ring focus:ring-pink-500 outline-none">
+            </div>
+
+            <div class="grid grid-cols-2 gap-4">
+                <div>
+                    <label class="text-white font-semibold">Edad</label>
+                    <input type="number" class="w-full mt-1 px-4 py-2 rounded-lg bg-white/20 text-white border border-white/30 focus:ring focus:ring-pink-500 outline-none">
+                </div>
+
+                <div>
+                    <label class="text-white font-semibold">Peso (kg)</label>
+                    <input type="number" class="w-full mt-1 px-4 py-2 rounded-lg bg-white/20 text-white border border-white/30 focus:ring focus:ring-pink-500 outline-none">
+                </div>
+            </div>
+
+            <div class="grid grid-cols-2 gap-4">
+                <div>
+                    <label class="text-white font-semibold">Altura (cm)</label>
+                    <input type="number" class="w-full mt-1 px-4 py-2 rounded-lg bg-white/20 text-white border border-white/30 focus:ring focus:ring-pink-500 outline-none">
+                </div>
+
+                <div>
+                    <label class="text-white font-semibold">Correo electrónico</label>
+                    <input type="email" class="w-full mt-1 px-4 py-2 rounded-lg bg-white/20 text-white border border-white/30 focus:ring focus:ring-pink-500 outline-none">
+                </div>
+            </div>
+
+            <div>
+                <label class="text-white font-semibold">Contraseña</label>
+                <input type="password" class="w-full mt-1 px-4 py-2 rounded-lg bg-white/20 text-white border border-white/30 focus:ring focus:ring-pink-500 outline-none">
+            </div>
+
+            <button type="submit"
+                class="w-full py-3 mt-4 bg-pink-600 hover:bg-pink-700 text-white font-bold rounded-xl shadow-xl transition-all">
+                Crear cuenta
+            </button>
+
+            <p class="text-gray-300 text-center mt-4">
+                ¿Ya tienes una cuenta?  
+                <a href="index.html" class="text-pink-400 hover:underline">Volver al inicio</a>
+            </p>
+        </form>
+    </div>
+
+</body>
+</html>
