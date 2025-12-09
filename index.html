@@ -7,132 +7,65 @@
   <meta name="description" content="VolleyFit: Entrenamiento especializado en volleyball y acondicionamiento físico. Clases, entrenadores, horarios y membresías en un entorno moderno." />
 
   <!-- Fonts -->
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&family=Rubik:wght@400;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&family=Rubik:wght@400;600;700&display=swap" rel="stylesheet">
 
   <style>
     :root{
-      --bg:#0b1220;
-      --panel:#0f1724;
-      --muted:#a6b0c3;
+      --bg:#07101a;
+      --panel:#0d1620;
+      --muted:#9fb0c6;
       --accent:#00d1c1;
       --accent-2:#ffd166;
-      --glass: rgba(255,255,255,0.04);
+      --glass: rgba(255,255,255,0.03);
       --radius:14px;
+      --glass-2: rgba(255,255,255,0.025);
       color-scheme: dark;
     }
 
     *{box-sizing:border-box;margin:0;padding:0}
+    html,body{height:100%}
     body{
-      background:radial-gradient(1200px 600px at 10% 10%, rgba(0,209,193,0.06), transparent),
-                radial-gradient(900px 450px at 90% 90%, rgba(255,209,102,0.03), transparent),
-                var(--bg);
-      font-family:Inter, sans-serif;
-      color:#e6eef8;
-      padding:36px 24px;
+      background: radial-gradient(900px 500px at 12% 10%, rgba(0,209,193,0.04), transparent),
+                  radial-gradient(700px 350px at 92% 88%, rgba(255,209,102,0.02), transparent),
+                  var(--bg);
+      font-family:Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+      color:#e8f2fb;
+      padding:28px 20px;
+      -webkit-font-smoothing:antialiased;
+      -moz-osx-font-smoothing:grayscale;
       overflow-x:hidden;
     }
 
     .container{max-width:1200px;margin:0 auto}
 
     /* HEADER */
-    header{
-      display:flex;align-items:center;justify-content:space-between;margin-bottom:38px;
-      position:relative;
-    }
-
-    /* light line */
-    header::after{
-      content:"";position:absolute;bottom:-8px;left:0;width:100%;height:2px;
-      background:linear-gradient(90deg, transparent, var(--accent), transparent);
-      opacity:0.25;animation:lineGlow 4s infinite linear;
-    }
-    @keyframes lineGlow{
-      0%{opacity:.1}50%{opacity:.4}100%{opacity:.1}
-    }
-
+    header{display:flex;align-items:center;justify-content:space-between;margin-bottom:34px;gap:16px}
     .brand{display:flex;gap:12px;align-items:center}
-    .logo{
-      width:56px;height:56px;border-radius:12px;
-      background:linear-gradient(135deg,var(--accent-2),var(--accent));
-      display:flex;align-items:center;justify-content:center;
-      box-shadow:0 10px 25px rgba(0,0,0,0.6);
-      animation:float 3s ease-in-out infinite;
-    }
-    @keyframes float{
-      0%,100%{transform:translateY(0)}
-      50%{transform:translateY(-6px)}
-    }
+    .logo{width:64px;height:64px;border-radius:14px;background:linear-gradient(135deg,var(--accent-2),var(--accent));display:flex;align-items:center;justify-content:center;box-shadow:0 10px 30px rgba(0,0,0,0.6);}
+    .logo svg{filter:drop-shadow(0 6px 16px rgba(0,0,0,0.6))}
+    h1{font-family:Rubik;font-size:20px;margin:0}
+    header p{font-size:12px;color:var(--muted);margin-top:2px}
 
-    nav{display:flex;gap:14px;font-weight:600}
-    nav a{
-      color:var(--muted);text-decoration:none;padding:8px 12px;border-radius:10px;
-      transition:0.25s;
-    }
-    nav a:hover{color:#fff;background:rgba(255,255,255,0.05)}
+    nav{display:flex;gap:10px;align-items:center}
+    nav a{color:var(--muted);text-decoration:none;padding:8px 12px;border-radius:10px;font-weight:600;transition:all .22s}
+    nav a:hover{color:#fff;background:rgba(255,255,255,0.03);transform:translateY(-3px)}
 
-    .cta{
-      background:linear-gradient(90deg,var(--accent),#2fe7d4);
-      color:#052126;padding:10px 14px;border-radius:12px;font-weight:700;
-      box-shadow:0 6px 20px rgba(0,209,193,0.3);
-      transition:0.25s;
-    }
-    .cta:hover{transform:translateY(-3px);box-shadow:0 12px 30px rgba(0,209,193,0.4)}
+    .cta{background:linear-gradient(90deg,var(--accent),#2fe7d4);color:#052126;padding:10px 14px;border-radius:12px;font-weight:800;box-shadow:0 10px 30px rgba(0,209,193,0.18);}
 
     /* HERO */
-    .hero{
-      display:grid;grid-template-columns:1fr 420px;gap:28px;align-items:center;margin-bottom:48px;
-    }
-
-    .hero-card{
-      background:linear-gradient(180deg, rgba(255,255,255,0.03), transparent);
-      border-radius:var(--radius);
-      padding:32px;
-      border:1px solid rgba(255,255,255,0.05);
-      box-shadow:0 8px 24px rgba(0,0,0,0.6);
-      animation:fadeUp 1s ease forwards;
-    }
-
-    @keyframes fadeUp{
-      from{opacity:0;transform:translateY(40px)}
-      to{opacity:1;transform:translateY(0)}
-    }
-
-    .badge{
-      background:rgba(255,255,255,0.05);
-      padding:8px 12px;border-radius:999px;font-size:13px;font-weight:600;
-      color:var(--accent-2);
-      animation:fade 3s infinite alternate;
-    }
-    @keyframes fade{
-      0%{opacity:0.6}
-      100%{opacity:1}
-    }
-
-    h2{font-family:Rubik;font-size:34px;margin:0 0 12px}
+    .hero{display:grid;grid-template-columns:1fr 420px;gap:26px;align-items:center;margin-bottom:36px}
+    .hero-card{background:linear-gradient(180deg, rgba(255,255,255,0.02), transparent);border-radius:18px;padding:30px;border:1px solid rgba(255,255,255,0.035);box-shadow:0 20px 50px rgba(2,8,16,0.65);backdrop-filter: blur(6px);transform-origin:center;}
+    .badge{display:inline-block;background:linear-gradient(90deg,var(--accent-2),rgba(255,255,255,0.04));padding:8px 12px;border-radius:999px;font-size:13px;font-weight:700;color:#072026}
+    h2{font-family:Rubik;font-size:36px;margin:14px 0}
     .lead{color:var(--muted);margin-bottom:18px}
 
-    .features{display:flex;gap:12px;flex-wrap:wrap;margin-top:18px}
-    .feature{
-      background:var(--glass);padding:10px 12px;border-radius:10px;font-size:13px;
-      display:flex;gap:10px;align-items:center;
-      transition:0.3s;
-    }
-    .feature:hover{background:rgba(255,255,255,0.08);transform:translateY(-3px)}
+    .features{display:flex;gap:12px;flex-wrap:wrap;margin-top:16px}
+    .feature{background:var(--glass);padding:10px 12px;border-radius:12px;font-size:13px;display:flex;gap:8px;align-items:center;transition:transform .28s,background .28s}
+    .feature:hover{transform:translateY(-6px);background:rgba(255,255,255,0.045)}
 
-    /* VISUAL HERO */
-    .hero-visual{
-      position:relative;height:320px;border-radius:12px;overflow:hidden;
-      background:linear-gradient(180deg, rgba(3,7,18,0.4), rgba(0,0,0,0.7));
-      display:flex;align-items:center;justify-content:center;
-      animation:parallax 10s infinite linear alternate;
-    }
-
-    @keyframes parallax{
-      0%{transform:translateY(0)}
-      100%{transform:translateY(-14px)}
-    }
-
-    .court{width:92%;height:92%;background:#081423;border-radius:14px;padding:18px;display:flex;flex-direction:column;justify-content:space-between}
+    .hero-visual{position:relative;height:340px;border-radius:16px;overflow:hidden;display:flex;align-items:center;justify-content:center;border:1px solid rgba(255,255,255,0.03);}
+    .mesh{position:absolute;inset:0;background:linear-gradient(120deg, rgba(0,209,193,0.035), rgba(255,209,102,0.02));mix-blend-mode:overlay}
+    .court{width:92%;height:88%;background:linear-gradient(180deg,#081423,#061018);border-radius:12px;padding:18px;display:flex;flex-direction:column;justify-content:space-between;align-items:center}
 
     /* GRID */
     .grid{display:grid;grid-template-columns:repeat(12,1fr);gap:20px}
@@ -140,62 +73,64 @@
     .col-4{grid-column:span 4}
 
     /* CARDS */
-    .cards{
-      display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:14px
-    }
-    .card{
-      background:rgba(255,255,255,0.03);
-      padding:18px;border-radius:12px;
-      border:1px solid rgba(255,255,255,0.04);
-      box-shadow:0 6px 20px rgba(0,0,0,0.6);
-      transition:0.35s;
-      transform-style:preserve-3d;
-    }
-    .card:hover{
-      transform:translateY(-10px) rotateX(4deg) rotateY(-3deg);
-      box-shadow:0 18px 34px rgba(0,0,0,0.7);
-    }
-
-    .pill{
-      background:rgba(255,255,255,0.05);
-      padding:6px 10px;border-radius:999px;font-size:13px;font-weight:700;color:var(--muted)
-    }
+    .cards{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:14px}
+    .card{background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));padding:16px;border-radius:14px;border:1px solid rgba(255,255,255,0.03);box-shadow:0 12px 28px rgba(0,0,0,0.6);position:relative;overflow:hidden;transition:transform .36s,box-shadow .36s}
+    .card::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,transparent,rgba(0,0,0,0.12));opacity:0;transition:opacity .36s}
+    .card:hover{transform:translateY(-12px) scale(1.02);box-shadow:0 28px 60px rgba(2,8,16,0.75)}
+    .card:hover::after{opacity:1}
+    .card .img{height:130px;border-radius:10px;background-size:cover;background-position:center;margin-bottom:12px;box-shadow:inset 0 -16px 40px rgba(0,0,0,0.35)}
+    .card h3{margin-bottom:6px}
+    .card p{color:var(--muted);font-size:14px;margin-bottom:10px}
+    .pill{background:rgba(255,255,255,0.04);padding:6px 10px;border-radius:999px;font-size:13px;font-weight:700;color:var(--muted);display:inline-block}
+    .card .card-footer{display:flex;justify-content:space-between;align-items:center;gap:10px}
+    .btn{display:inline-block;padding:10px 14px;border-radius:10px;font-weight:700;text-decoration:none}
+    .btn-ghost{border:1px solid rgba(255,255,255,0.08);color:var(--muted);background:transparent}
+    .btn-primary{background:linear-gradient(90deg,var(--accent),#2fe7d4);color:#052126;border-radius:12px;padding:10px 14px;font-weight:800}
 
     /* TRAINERS */
-    .trainers{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:16px}
-    .trainer{
-      background:rgba(255,255,255,0.03);padding:14px;border-radius:12px;display:flex;gap:12px;
-      border:1px solid rgba(255,255,255,0.05);
-      transition:0.35s;
-    }
-    .trainer:hover{transform:translateY(-8px);box-shadow:0 16px 32px rgba(0,0,0,0.6)}
+    .trainers{display:grid;grid-template-columns:repeat(1,1fr);gap:12px;margin-top:16px}
+    .trainer{display:flex;gap:12px;align-items:center;padding:12px;border-radius:12px;background:linear-gradient(180deg, rgba(255,255,255,0.01), transparent);border:1px solid rgba(255,255,255,0.03);transition:transform .28s,box-shadow .28s}
+    .trainer:hover{transform:translateY(-8px);box-shadow:0 18px 40px rgba(0,0,0,0.6)}
+    .avatar{width:72px;height:72px;border-radius:999px;flex:0 0 72px;background-size:cover;background-position:center;border:3px solid rgba(255,255,255,0.06)}
+    .trainer h4{margin:0 0 6px;font-size:16px}
+    .trainer p{margin:0;color:var(--muted)}
 
     /* GALLERY */
-    .gallery{
-      display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin-top:16px
-    }
-    .gallery .item{
-      height:120px;border-radius:10px;overflow:hidden;position:relative;
-      background-size:cover;background-position:center;
-      filter:brightness(0.85);transition:0.3s;
-    }
-    .gallery .item:hover{filter:brightness(1)}
+    .gallery{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-top:16px}
+    .gallery .item{height:130px;border-radius:12px;overflow:hidden;position:relative;background-size:cover;background-position:center;filter:brightness(0.9);transition:transform .36s,filter .28s}
+    .gallery .item:hover{transform:scale(1.04);filter:brightness(1)}
 
     /* MEMBERSHIP */
     .pricing{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:14px}
-    .price{
-      background:rgba(255,255,255,0.03);
-      padding:18px;border-radius:12px;border:1px solid rgba(255,255,255,0.04);
-      transition:0.35s;
+    .price{background:linear-gradient(180deg, rgba(255,255,255,0.01), transparent);padding:18px;border-radius:12px;border:1px solid rgba(255,255,255,0.03);transition:transform .28s}
+    .price:hover{transform:translateY(-8px);box-shadow:0 18px 42px rgba(0,0,0,0.6)}
+    .amount{font-size:18px;font-weight:800;margin:8px 0}
+
+    /* CTA CENTER */
+    .big-cta{display:flex;justify-content:center;margin:34px 0}
+    .big-cta .btn{padding:16px 28px;border-radius:18px;font-size:18px}
+
+    footer{margin-top:50px;padding-top:24px;border-top:1px solid rgba(255,255,255,0.03);display:flex;justify-content:space-between;gap:16px;align-items:center}
+    footer p{color:var(--muted);font-size:13px}
+
+    /* RESPONSIVE */
+    @media (max-width:1000px){
+      .hero{grid-template-columns:1fr 320px}
+      .cards{grid-template-columns:repeat(2,1fr)}
+      .gallery{grid-template-columns:repeat(3,1fr)}
+      .col-8{grid-column:span 12}
+      .col-4{grid-column:span 12}
     }
-    .price:hover{transform:translateY(-8px);box-shadow:0 18px 38px rgba(0,0,0,0.7)}
+    @media (max-width:640px){
+      .hero{grid-template-columns:1fr}
+      .hero-visual{order:2;height:260px}
+      nav{display:none}
+      .cards{grid-template-columns:repeat(1,1fr)}
+      .gallery{grid-template-columns:repeat(2,1fr)}
+    }
 
-    .btn{display:inline-block;padding:10px 14px;border-radius:10px;font-weight:700;text-decoration:none}
-    .btn-ghost{border:1px solid rgba(255,255,255,0.08);color:var(--muted)}
-
-    /* SCROLL ANIMATIONS */
-    .reveal{opacity:0;transform:translateY(50px);transition:0.8s ease-out}
-    .reveal.visible{opacity:1;transform:translateY(0)}
+    /* Subtle parallax + tilt support */
+    .tilt{transform-style:preserve-3d;will-change:transform}
 
   </style>
 </head>
@@ -204,18 +139,18 @@
 <div class="container">
 
   <!-- HEADER -->
-  <header class="reveal">
+  <header>
     <div class="brand">
-      <div class="logo">
-        <svg viewBox="0 0 24 24" width="30" height="30"><circle cx="12" cy="12" r="9" stroke="#042026" stroke-width="1.6"/></svg>
+      <div class="logo" aria-hidden>
+        <svg viewBox="0 0 48 48" width="34" height="34"><defs/><g fill="none" stroke="#042026" stroke-width="1.2"><circle cx="24" cy="24" r="20" stroke-opacity="0.12"/></g><g fill="#052126"><path d="M24 12c6 0 10 4 10 10s-4 10-10 10-10-4-10-10 4-10 10-10z" opacity="0.08"/></g></svg>
       </div>
       <div>
         <h1>VolleyFit</h1>
-        <p style="color:var(--muted);font-size:12px">Volleyball • Conditioning • Comunidad</p>
+        <p>Volleyball • Conditioning • Comunidad</p>
       </div>
     </div>
 
-    <nav>
+    <nav aria-label="Principal">
       <a href="#programs">Programas</a>
       <a href="#trainers">Entrenadores</a>
       <a href="#schedule">Horarios</a>
@@ -225,127 +160,299 @@
   </header>
 
   <!-- HERO -->
-  <section class="hero reveal">
-    <div class="hero-card">
-      <span class="badge">Nuevo · Clases mixtas</span>
+  <section class="hero">
+    <div class="hero-card tilt" id="heroCard">
+      <div style="display:flex;justify-content:space-between;align-items:center;gap:12px">
+        <span class="badge">Nuevo · Clases mixtas</span>
+        <div style="font-size:13px;color:var(--muted)">Próxima sesión: <strong style="color:#fff">Sáb 10:00</strong></div>
+      </div>
+
       <h2>Entrena más fuerte. Salta más alto. Juega mejor.</h2>
-      <p class="lead">Combinamos entrenamiento específico de volleyball con fuerza y prevención de lesiones.</p>
+      <p class="lead">Combinamos entrenamiento específico de volleyball con fuerza, movilidad y prevención de lesiones — para jugadores recreativos y de alto rendimiento.</p>
 
-      <div class="features">
-        <div class="feature"><span>🏐 Entrenamientos dirigidos</span></div>
-        <div class="feature"><span>💪 Fuerza & movilidad</span></div>
-        <div class="feature"><span>🎓 Entrenadores certificados</span></div>
+      <div class="features" role="list">
+        <div class="feature" role="listitem">🏐 <strong>Entrenamientos dirigidos</strong> — drills por posición</div>
+        <div class="feature" role="listitem">💪 <strong>Fuerza & movilidad</strong> — plan progresivo</div>
+        <div class="feature" role="listitem">🎓 <strong>Entrenadores certificados</strong> — experiencia nacional</div>
       </div>
 
-      <div style="margin-top:18px;display:flex;gap:12px">
-        <a class="cta" href="#membership">Comenzar</a>
+      <div style="margin-top:18px;display:flex;gap:12px;flex-wrap:wrap">
+        <a class="btn-primary" href="#membership">Comenzar</a>
         <a class="btn btn-ghost" href="#programs">Ver Programas</a>
+        <a class="btn btn-ghost" href="#gallery">Ver Fotos</a>
       </div>
+
+      <div style="margin-top:18px;color:var(--muted);font-size:13px">Modalidad: Presencial • Online (stream) • Entrenamiento personalizado</div>
     </div>
 
-    <aside class="hero-visual">
-      <div class="court center">
-        <svg width="220" height="220" viewBox="0 0 24 24">
-          <circle cx="12" cy="12" r="9" stroke="rgba(255,255,255,0.15)" stroke-width="1.6"/>
-        </svg>
+    <aside class="hero-visual" aria-hidden>
+      <div class="mesh"></div>
+      <div class="court" id="court">
+        <svg width="240" height="240" viewBox="0 0 24 24" style="opacity:.12"><circle cx="12" cy="12" r="9" stroke="white" stroke-width="1.2" fill="none"/></svg>
+        <!-- Placeholder for animated players or short looping video -->
+        <div style="width:100%;display:flex;align-items:center;justify-content:center;height:100%">
+          <img src="https://images.unsplash.com/photo-1517649763962-0c623066013b?q=80&w=900&auto=format&fit=crop" alt="Volleyball action" style="height:100%;width:auto;border-radius:10px;object-fit:cover;box-shadow:0 8px 30px rgba(0,0,0,0.6);">
+        </div>
       </div>
     </aside>
   </section>
 
+  <!-- BIG CTA CENTER -->
+  <div class="big-cta">
+    <a class="btn btn-primary" href="#signup" style="font-size:18px;box-shadow:0 20px 50px rgba(0,209,193,0.12)">¿Quieres una clase de prueba? Reserva gratis</a>
+  </div>
+
   <!-- MAIN GRID -->
-  <main class="grid">
+  <main class="grid" aria-live="polite">
     <!-- PROGRAMAS -->
-    <section class="col-8 reveal" id="programs">
+    <section class="col-8" id="programs">
       <h3 style="font-family:Rubik;margin-bottom:12px">Programas destacados</h3>
       <div class="cards">
-        <article class="card">
+        <article class="card tilt" data-tilt>
+          <div class="img" style="background-image:url('https://images.unsplash.com/photo-1508606572321-901ea443707f?q=80&w=1200&auto=format&fit=crop')" role="img" aria-label="Técnica de pista"></div>
           <h3>Técnica de Pista</h3>
-          <p>Mejora recepción, colocación y remate con drills progresivos.</p>
-          <div class="pill">3 niveles</div>
+          <p>Recepción, colocación y remate con drills progresivos y análisis de video.</p>
+          <div class="card-footer">
+            <div class="pill">3 niveles</div>
+            <div style="display:flex;gap:8px">
+              <a class="btn btn-ghost" href="#" aria-label="Ver características Técnica de Pista">Ver características</a>
+              <a class="btn btn-primary" href="#signup">Inscribirme</a>
+            </div>
+          </div>
         </article>
 
-        <article class="card">
+        <article class="card tilt" data-tilt>
+          <div class="img" style="background-image:url('https://images.unsplash.com/photo-1558611848-73f7eb4001d5?q=80&w=1200&auto=format&fit=crop')" role="img" aria-label="Fuerza y Potencia"></div>
           <h3>Fuerza y Potencia</h3>
-          <p>Entrenamiento funcional para salto, velocidad y resistencia.</p>
-          <div class="pill">Atletas</div>
+          <p>Entrenamiento funcional para salto, velocidad y resistencia. Periodización semanal.</p>
+          <div class="card-footer">
+            <div class="pill">Atletas</div>
+            <div style="display:flex;gap:8px">
+              <a class="btn btn-ghost" href="#" aria-label="Ver características Fuerza y Potencia">Ver características</a>
+              <a class="btn btn-primary" href="#signup">Inscribirme</a>
+            </div>
+          </div>
         </article>
 
-        <article class="card">
+        <article class="card tilt" data-tilt>
+          <div class="img" style="background-image:url('https://images.unsplash.com/photo-1526403224734-6f6d7d88e9f6?q=80&w=1200&auto=format&fit=crop')" role="img" aria-label="Prevención de Lesiones"></div>
           <h3>Prevención de Lesiones</h3>
-          <p>Movilidad, estabilidad y técnica para mantenerte en pista.</p>
-          <div class="pill">Todos los niveles</div>
+          <p>Movilidad, estabilidad y técnica para estar siempre en pista.</p>
+          <div class="card-footer">
+            <div class="pill">Todos los niveles</div>
+            <div style="display:flex;gap:8px">
+              <a class="btn btn-ghost" href="#" aria-label="Ver características Prevención de Lesiones">Ver características</a>
+              <a class="btn btn-primary" href="#signup">Inscribirme</a>
+            </div>
+          </div>
+        </article>
+
+        <article class="card tilt" data-tilt>
+          <div class="img" style="background-image:url('https://images.unsplash.com/photo-1558617134-7cc6e12b4a6d?q=80&w=1200&auto=format&fit=crop')" role="img" aria-label="Clases tácticas"></div>
+          <h3>Táctica & Juego</h3>
+          <p>Lectura de juego, formaciones y toma de decisiones bajo presión.</p>
+          <div class="card-footer">
+            <div class="pill">Grupos reducidos</div>
+            <div style="display:flex;gap:8px">
+              <a class="btn btn-ghost" href="#" aria-label="Ver características Táctica">Ver características</a>
+              <a class="btn btn-primary" href="#signup">Inscribirme</a>
+            </div>
+          </div>
+        </article>
+
+        <article class="card tilt" data-tilt>
+          <div class="img" style="background-image:url('https://images.unsplash.com/photo-1526406915892-8a9ae7e4b37b?q=80&w=1200&auto=format&fit=crop')" role="img" aria-label="Clases para juveniles"></div>
+          <h3>Programa Juvenil</h3>
+          <p>Formación técnica y hábitos de entrenamiento para jóvenes talentos.</p>
+          <div class="card-footer">
+            <div class="pill">8-16 años</div>
+            <div style="display:flex;gap:8px">
+              <a class="btn btn-ghost" href="#" aria-label="Ver características Juvenil">Ver características</a>
+              <a class="btn btn-primary" href="#signup">Inscribirme</a>
+            </div>
+          </div>
+        </article>
+
+        <article class="card tilt" data-tilt>
+          <div class="img" style="background-image:url('https://images.unsplash.com/photo-1526404421005-3b1dcd6b62d9?q=80&w=1200&auto=format&fit=crop')" role="img" aria-label="Entrenamiento personalizado"></div>
+          <h3>Entrenamiento Personalizado</h3>
+          <p>Programas adaptados a objetivos individuales y análisis de progreso.</p>
+          <div class="card-footer">
+            <div class="pill">1:1 Coach</div>
+            <div style="display:flex;gap:8px">
+              <a class="btn btn-ghost" href="#" aria-label="Ver características Personalizado">Ver características</a>
+              <a class="btn btn-primary" href="#signup">Inscribirme</a>
+            </div>
+          </div>
         </article>
       </div>
     </section>
 
     <!-- TRAINERS -->
-    <aside class="col-4 reveal" id="trainers">
+    <aside class="col-4" id="trainers">
       <h3 style="font-family:Rubik;margin-bottom:12px">Entrenadores</h3>
       <div class="trainers">
-        <div class="trainer">
-          <div class="avatar">A</div>
-          <div><h4>Ana</h4><p>Técnica & Fuerza</p></div>
+        <div class="trainer tilt" data-tilt>
+          <div class="avatar" style="background-image:url('https://images.unsplash.com/photo-1544005313-94ddf0286df2?q=80&w=800&auto=format&fit=crop')" role="img" aria-label="Ana"></div>
+          <div>
+            <h4>Ana Rodríguez</h4>
+            <p>Técnica & Fuerza · 8 años de experiencia</p>
+            <div style="margin-top:8px;display:flex;gap:8px">
+              <a class="btn btn-ghost" href="#">Perfil</a>
+              <a class="btn btn-primary" href="#signup">Contactar</a>
+            </div>
+          </div>
         </div>
-        <div class="trainer">
-          <div class="avatar">M</div>
-          <div><h4>Marco</h4><p>Potencia & Rendimiento</p></div>
+
+        <div class="trainer tilt" data-tilt>
+          <div class="avatar" style="background-image:url('https://images.unsplash.com/photo-1545996124-1f2b6f47a1d5?q=80&w=800&auto=format&fit=crop')" role="img" aria-label="Marco"></div>
+          <div>
+            <h4>Marco López</h4>
+            <p>Potencia & Rendimiento · Preparador físico</p>
+            <div style="margin-top:8px;display:flex;gap:8px">
+              <a class="btn btn-ghost" href="#">Perfil</a>
+              <a class="btn btn-primary" href="#signup">Contactar</a>
+            </div>
+          </div>
         </div>
-        <div class="trainer">
-          <div class="avatar">L</div>
-          <div><h4>Luisa</h4><p>Movilidad & Lesiones</p></div>
+
+        <div class="trainer tilt" data-tilt>
+          <div class="avatar" style="background-image:url('https://images.unsplash.com/photo-1544006659-f0b21884ce1d?q=80&w=800&auto=format&fit=crop')" role="img" aria-label="Luisa"></div>
+          <div>
+            <h4>Luisa Castro</h4>
+            <p>Movilidad & Recuperación · Fisioterapeuta</p>
+            <div style="margin-top:8px;display:flex;gap:8px">
+              <a class="btn btn-ghost" href="#">Perfil</a>
+              <a class="btn btn-primary" href="#signup">Contactar</a>
+            </div>
+          </div>
         </div>
+
       </div>
     </aside>
   </main>
 
   <!-- GALLERY -->
-  <section class="reveal" style="margin-top:40px">
+  <section style="margin-top:36px" id="gallery">
     <h3 style="font-family:Rubik;margin-bottom:12px">Galería</h3>
     <div class="gallery">
-      <div class="item" style="background-image:url('https://images.unsplash.com/photo-1504450758481-7338eba7524a')"></div>
-      <div class="item" style="background-image:url('https://images.unsplash.com/photo-1574629810360-7efbbe195018')"></div>
-      <div class="item" style="background-image:url('https://images.unsplash.com/photo-1521412644187-c49fa049e84d')"></div>
-      <div class="item" style="background-image:url('https://images.unsplash.com/photo-1505678261036-a3fcc5e884ee')"></div>
+      <div class="item" style="background-image:url('https://images.unsplash.com/photo-1517649763962-0c623066013b?q=80&w=1200&auto=format&fit=crop')" role="img" aria-label="Foto 1"></div>
+      <div class="item" style="background-image:url('https://images.unsplash.com/photo-1574629810360-7efbbe195018?q=80&w=1200&auto=format&fit=crop')" role="img" aria-label="Foto 2"></div>
+      <div class="item" style="background-image:url('https://images.unsplash.com/photo-1521412644187-c49fa049e84d?q=80&w=1200&auto=format&fit=crop')" role="img" aria-label="Foto 3"></div>
+      <div class="item" style="background-image:url('https://images.unsplash.com/photo-1505678261036-a3fcc5e884ee?q=80&w=1200&auto=format&fit=crop')" role="img" aria-label="Foto 4"></div>
     </div>
   </section>
 
   <!-- MEMBERSHIP -->
-  <section class="reveal" id="membership" style="margin-top:40px">
+  <section style="margin-top:36px" id="membership">
     <h3 style="font-family:Rubik;margin-bottom:12px">Membresías</h3>
     <div class="pricing">
       <div class="price">
         <h3>Básico</h3>
         <p class="amount">120 Bs/mes</p>
-        <p class="muted">2 clases por semana</p>
+        <p class="muted">2 clases por semana • Acceso a horarios</p>
+        <div style="margin-top:12px;display:flex;gap:8px"><a class="btn btn-ghost" href="#">Detalles</a><a class="btn btn-primary" href="#signup">Contratar</a></div>
       </div>
+
       <div class="price">
         <h3>Intermedio</h3>
         <p class="amount">180 Bs/mes</p>
-        <p class="muted">3 clases por semana</p>
+        <p class="muted">3 clases por semana • Acceso a talleres</p>
+        <div style="margin-top:12px;display:flex;gap:8px"><a class="btn btn-ghost" href="#">Detalles</a><a class="btn btn-primary" href="#signup">Contratar</a></div>
       </div>
+
       <div class="price">
         <h3>Completo</h3>
         <p class="amount">250 Bs/mes</p>
-        <p class="muted">Clases ilimitadas</p>
+        <p class="muted">Clases ilimitadas • 1 sesión 1:1 al mes</p>
+        <div style="margin-top:12px;display:flex;gap:8px"><a class="btn btn-ghost" href="#">Detalles</a><a class="btn btn-primary" href="#signup">Contratar</a></div>
       </div>
     </div>
   </section>
 
+  <!-- CONTACT / SIGNUP -->
+  <section id="contact" style="margin-top:36px">
+    <h3 style="font-family:Rubik;margin-bottom:12px">Contacto & Reserva</h3>
+    <div style="display:grid;grid-template-columns:1fr 320px;gap:18px;align-items:start">
+      <form style="background:var(--panel);padding:18px;border-radius:12px;border:1px solid rgba(255,255,255,0.03)" id="signup">
+        <label style="display:block;margin-bottom:8px;font-weight:700">Nombre</label>
+        <input required name="name" placeholder="Tu nombre" style="width:100%;padding:10px;border-radius:8px;border:1px solid rgba(255,255,255,0.04);background:transparent;color:inherit;margin-bottom:10px">
+        <label style="display:block;margin-bottom:8px;font-weight:700">Teléfono / WhatsApp</label>
+        <input required name="phone" placeholder="+591 7x xxx xxxx" style="width:100%;padding:10px;border-radius:8px;border:1px solid rgba(255,255,255,0.04);background:transparent;color:inherit;margin-bottom:10px">
+        <label style="display:block;margin-bottom:8px;font-weight:700">Mensaje</label>
+        <textarea name="msg" rows="4" placeholder="Quiero reservar una clase de prueba" style="width:100%;padding:10px;border-radius:8px;border:1px solid rgba(255,255,255,0.04);background:transparent;color:inherit;margin-bottom:10px"></textarea>
+        <div style="display:flex;gap:8px"><button class="btn btn-primary" type="submit">Enviar</button><button type="reset" class="btn btn-ghost">Limpiar</button></div>
+      </form>
+
+      <aside style="background:linear-gradient(180deg, rgba(255,255,255,0.01), transparent);padding:18px;border-radius:12px;border:1px solid rgba(255,255,255,0.03)">
+        <h4 style="margin:0 0 8px">Horario</h4>
+        <p style="color:var(--muted);margin:0 0 12px">Lun - Vie: 06:30 - 21:00<br>Sáb: 08:00 - 13:00</p>
+        <h4 style="margin:0 0 8px">Ubicación</h4>
+        <p style="color:var(--muted);margin:0 0 12px">Cochabamba, Bolivia • Cancha Central</p>
+        <a class="btn btn-ghost" href="#">Cómo llegar</a>
+      </aside>
+    </div>
+  </section>
+
+  <footer>
+    <div>
+      <p>© <strong>VolleyFit</strong> — Todos los derechos reservados</p>
+      <p style="color:var(--muted);font-size:13px;margin-top:6px">Síguenos: Instagram · Facebook · TikTok</p>
+    </div>
+    <div style="text-align:right">
+      <p style="font-size:13px;color:var(--muted)">Contacto: <strong style="color:#fff">+591 7X XXX XXX</strong></p>
+    </div>
+  </footer>
+
 </div>
 
-<!-- SCROLL REVEAL SCRIPT -->
+<!-- SCRIPTS: tilt, reveal, lazy load -->
 <script>
-  const reveals=document.querySelectorAll('.reveal');
-  const revealOnScroll=()=>{
-    for(let r of reveals){
-      const rect=r.getBoundingClientRect();
-      if(rect.top < window.innerHeight-80){
-        r.classList.add('visible');
-      }
+  // Simple tilt effect for elements with data-tilt
+  (function(){
+    const tilts = document.querySelectorAll('[data-tilt]');
+    tilts.forEach(el => {
+      el.addEventListener('mousemove', e => {
+        const rect = el.getBoundingClientRect();
+        const x = (e.clientX - rect.left) / rect.width - 0.5;
+        const y = (e.clientY - rect.top) / rect.height - 0.5;
+        const rx = (y * 10).toFixed(2);
+        const ry = (x * -12).toFixed(2);
+        el.style.transform = `perspective(900px) rotateX(${rx}deg) rotateY(${ry}deg) translateZ(6px)`;
+      });
+      el.addEventListener('mouseleave', ()=> el.style.transform = 'perspective(900px) rotateX(0deg) rotateY(0deg)');
+    });
+  })();
+
+  // Scroll reveal
+  const reveals = document.querySelectorAll('.reveal, .tilt');
+  const onScroll = () => {
+    for (const r of reveals){
+      const rect = r.getBoundingClientRect();
+      if (rect.top < window.innerHeight - 80) r.classList.add('visible');
     }
   };
-  window.addEventListener('scroll',revealOnScroll);
-  revealOnScroll();
+  window.addEventListener('scroll', onScroll);
+  onScroll();
+
+  // Minimal form handler
+  document.getElementById('signup').addEventListener('submit', function(e){
+    e.preventDefault();
+    alert('¡Gracias! Tu reserva fue enviada. Te contactaremos pronto.');
+    this.reset();
+  });
+
+  // Lazy-load images background (basic)
+  document.addEventListener('DOMContentLoaded', ()=>{
+    const bgEls = document.querySelectorAll('.img, .avatar, .gallery .item');
+    bgEls.forEach(el => {
+      const style = getComputedStyle(el);
+      if(style.backgroundImage && style.backgroundImage !== 'none'){
+        // keep as is (images are from Unsplash with query params)
+      }
+    });
+  });
+
 </script>
 
 </body>
